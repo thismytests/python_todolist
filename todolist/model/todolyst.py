@@ -1,4 +1,4 @@
-from todolist.item import Item
+from todolist.model.item import Item
 
 
 class TodoList():

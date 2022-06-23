@@ -1,5 +1,5 @@
-from todolist.item import Item
-from todolist.todolyst import TodoList
+from todolist.model.item import Item
+from todolist.model.todolyst import TodoList
 
 
 def test_create_item():
