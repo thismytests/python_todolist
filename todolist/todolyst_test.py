@@ -1,3 +1,4 @@
+from todolist.item import Item
 from todolist.todolyst import TodoList
 
 
@@ -48,3 +49,34 @@ def test_delete_item_negative():
     deleted_id = inst.delete_item_by_id(some_not_exist_id)
     assert len(inst.get_all_items()) == 1
     assert deleted_id is None
+
+
+def test_update_item_positive():
+    """Should update item if it exists in the store"""
+    inst = TodoList()
+
+    item_id = inst.create_item()
+    item = inst.get_item_by_id(item_id)
+    assert item.title == ''
+
+    test_text = 'test_text'
+    item.title = test_text
+
+    is_item_updated = inst.update_item(item_id, item)
+    update_item = inst.get_item_by_id(item_id)
+
+    assert is_item_updated == True
+    assert update_item.title == test_text
+
+
+def test_update_item_positive():
+    """Should return false if item can't be updated"""
+    inst = TodoList()
+
+    item = Item()
+    item_id = item
+
+    is_item_updated = inst.update_item(item_id, item)
+    assert is_item_updated == False
+
+
