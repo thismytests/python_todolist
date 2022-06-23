@@ -36,12 +36,15 @@ def test_delete_item_positive():
     assert len(inst.get_all_items()) == 1
     deleted_id = inst.delete_item_by_id(item_id)
     assert len(inst.get_all_items()) == 0
-    # assert deleted_id is not None
+    assert deleted_id is not None
 
-def test_delete_item_positive():
+
+def test_delete_item_negative():
     """Should return None if item with id doesn't exist in the store"""
     inst = TodoList()
+    inst.create_item()
     some_not_exist_id = 'some_not_exist_id'
     assert len(inst.get_all_items()) == 1
-    inst.delete_item_by_id(some_not_exist_id)
+    deleted_id = inst.delete_item_by_id(some_not_exist_id)
     assert len(inst.get_all_items()) == 1
+    assert deleted_id is None

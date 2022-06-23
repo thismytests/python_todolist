@@ -14,8 +14,8 @@ class TodoList():
             if item.id == uniq_id:
                 return item
 
-    def delete_item_by_id(self, id):
-        item_in_store = self.get_item_by_id(id)
+    def delete_item_by_id(self, uniq_id):
+        item_in_store = self.get_item_by_id(uniq_id)
 
         if item_in_store in self.__store:
             self.__store.remove(item_in_store)
